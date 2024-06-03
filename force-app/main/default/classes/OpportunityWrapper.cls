@@ -1,12 +1,10 @@
 /**
- * @description       : 
+ * @description       : Wrapper class for Opportunity with associated account and contact details.
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
  * @last modified on  : 06-03-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
-
-
 public class OpportunityWrapper {
     @AuraEnabled
     public String opportunityId { get; set; }
@@ -19,18 +17,11 @@ public class OpportunityWrapper {
     @AuraEnabled
     public String contactName { get; set; }
 
-    public OpportunityWrapper(Opportunity opp) {
+    public OpportunityWrapper(Opportunity opp, Contact con) {
         this.opportunityId = opp.Id;
         this.opportunityName = opp.Name;
         this.accountId = opp.AccountId;
         this.accountName = opp.Account.Name;
-
-        // Get at least one contact related to the Opportunity
-        List<Contact> contacts = [SELECT Id, Name FROM Contact WHERE AccountId = :opp.AccountId LIMIT 1];
-        if (!contacts.isEmpty()) {
-            this.contactName = contacts[0].Name;
-        } else {
-            this.contactName = 'No Contact';
-        }
+        this.contactName = con != null ? con.Name : null;
     }
 }
