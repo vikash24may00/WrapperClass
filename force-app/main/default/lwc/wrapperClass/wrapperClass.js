@@ -2,8 +2,8 @@ import { LightningElement, track, wire } from 'lwc';
 import getOpportunities from '@salesforce/apex/OpportunityController.getOpportunities';
 
 export default class OpportunityDataTable extends LightningElement {
-    @track opportunityData = [];
-    @track error;
+     opportunityData = [];
+     error;
 
     columns = [
         { label: 'Opportunity Name', fieldName: 'opportunityName', type: 'text' },
@@ -19,7 +19,7 @@ export default class OpportunityDataTable extends LightningElement {
             this.error = undefined;
         } else if (error) {
             this.opportunityData = undefined;
-            this.error = error.body ? error.body.message : error;
+            this.error = error;
         }
     }
 }

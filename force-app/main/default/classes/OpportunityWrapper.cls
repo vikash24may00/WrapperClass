@@ -1,3 +1,12 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 06-03-2024
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
+
+
 public class OpportunityWrapper {
     @AuraEnabled
     public String opportunityId { get; set; }
